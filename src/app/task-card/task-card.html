@@ -1,0 +1,22 @@
+<div class="task-card" [class.done]="task().completed">
+  <div class="card-header">
+    <h2>{{ task().title }}</h2>
+    <span class="priority" [class]="'priority-' + task().priority.toLowerCase()">
+            @switch (task().priority) {
+              @case ('HIGH')   { Haster }
+              @case ('MEDIUM') { Normal }
+              @default         { Kan vente }
+            }
+        </span>
+  </div>
+
+  <p>{{ task().description }}</p>
+  <p class="deadline">Deadline: {{ task().deadline | date:'d. MMMM yyyy' }}</p>
+
+  <div class="card-actions">
+    <button class="link" (click)="onDelete()">Slet</button>
+    <button (click)="onToggle()">
+      {{ task().completed ? 'Genåbn' : 'Markér som færdig' }}
+    </button>
+  </div>
+</div>
